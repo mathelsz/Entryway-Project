@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <property name="uuid_type" value="uuid" dbms="postgresql"/>
+    <property name="uuid_function" value="uuid_generate_v4()" dbms="postgresql"/>
+
+    <changeSet id="20231113200000" author="Matheus">
+        <createTable tableName="subject">
+            <column name="id" type="${uuid_type}" defaultValueComputed="${uuid_function}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject_type" type="varchar(256)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(90)"/>
+            <column name="email" type="varchar(256)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar"/>
+            <column name="active" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey tableName="subject" columnNames="id"/>
+
+        <addUniqueConstraint tableName="subject" columnNames="username" constraintName="unique_subject_username"/>
+    </changeSet>
+
+    <changeSet id="20231114081000" author="Matheus">
+        <insert tableName="subject">
+            <column name="id" value="e3474f08-94fd-4b3c-8e37-ff958483b7c4"/>
+            <column name="subject_type" value="ENTRY"/>
+            <column name="username" value="entryway"/>
+            <column name="name" value="Entryway"/>
+            <column name="email" value="entryway@entryway.com"/>
+            <column name="phone" value="+5544997282268"/>
+            <column name="password" value="123"/>
+            <column name="active" value="true"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

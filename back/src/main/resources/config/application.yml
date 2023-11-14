@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: entryway
+  datasource:
+    url: jdbc:postgresql://localhost:5432/entryway
+    # noinspection SpringBootApplicationYaml
+    driver-class-name: org.postgresql.Driver
+    username: entryway
+    password: entryway
+  jpa:
+    properties.hibernate:
+      generate_statistics: false
+      order_by:
+        default_null_ordering: last
+    hibernate:
+      # noinspection SpringBootApplicationYaml
+      dialect: org.hibernate.dialect.PostgreSQL95alect
+      ddl-auto: validate
+    open-in-view: true
+    show-sql: false
+  liquibase:
+    change-log: classpath:db/changelog/changeLog.entryway.default.xml
+    default-schema: public
+  servlet:
+    multipart:
+      maxFileSize: -1
+      maxRequestSize: -1
+
+server:
+  port: 8080
+
+application:
+  entryway-api-secret: "entryapizhsXjhjgocI4PAosVi1GsxgUthC1DTCKGDdlV2SzW2oNWpQLnJYTu3YUB9uLqLTJxgQjeco5X29PrFpv3zYGuitLeppSLpmPRE5kh6eRAv1WD3dxo85HgQMCZUG"
