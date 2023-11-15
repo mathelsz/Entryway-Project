@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .container {
@@ -41,7 +42,6 @@
 .login-form-title {
   display: block;
   font-size: 25px;
-  font-family: 'Courier New', Courier, monospace;
   color: azure;
 
   line-height: 1.2;
