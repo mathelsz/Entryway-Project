@@ -1,35 +1,26 @@
 import { Link } from 'react-router-dom';
 
-import logo from '../../assests/logo.webp'
 import { LayoutComponents } from '../../components/LayoutsComponents';
 import { InputUsername } from '../../components/Inputs/Username';
-import { InputPassword } from '../../components/Inputs/Password';
+import { InputPasswordWithReset } from '../../components/Inputs/Password';
 
 export const Login = () => {
   return (
-    <LayoutComponents>
-      <form className="login-form">
+    <LayoutComponents title="Welcome">
 
-        <span className="login-form-title">Bem Vindo</span>
+      <InputUsername />
+      <InputPasswordWithReset />
 
-        <span className="login-form-title">
-          <img src={logo} alt='Logo de login' />
-        </span>
+      <div className="container-login-form-btn">
+        <button className="login-form-btn">Sign in</button>
+      </div>
 
-        <InputUsername/>
-        <InputPassword/>
+      <div className="text-center">
+        <span className="txt1">New to Entryway?</span>
 
-        <div className="container-login-form-btn">
-          <button className="login-form-btn">Login</button>
-        </div>
+        <Link className="txt2" to="/register">Sign Up</Link>
+      </div>
 
-        <div className="text-center">
-          <span className="txt1">Não possui conta?</span>
-
-          <Link className="txt2" to="/register">Criar conta.</Link>
-        </div>
-
-      </form>
     </LayoutComponents>
   );
 }

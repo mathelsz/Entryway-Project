@@ -1,16 +1,22 @@
 import { useState } from 'react';
 import '../../../../src/styles.css'
 
-export const InputName = () => {
-  const [name, setName] = useState("")
+export const InputName = ({ onChange }) => {
+  const [nameInput, setNameInput] = useState("");
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setNameInput(value);
+    onChange(value);
+  };
 
   return (
     <div className="wrap-input">
           <input
-            className={name !== "" ? 'has-val input' : 'input'}
+            className={nameInput !== "" ? 'has-val input' : 'input'}
             type="name"
-            value={name}
-            onChange={e => setName(e.target.value)}
+            value={nameInput}
+            onChange={handleInputChange}
           />
           <span className="focus-input" data-placeholder="Name"></span>
         </div>
