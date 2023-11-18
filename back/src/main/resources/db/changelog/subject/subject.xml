@@ -23,9 +23,7 @@
             <column name="email" type="varchar(256)">
                 <constraints nullable="false"/>
             </column>
-            <column name="phone" type="varchar(16)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="phone" type="varchar(16)"/>
             <column name="password" type="varchar"/>
             <column name="active" type="boolean">
                 <constraints nullable="false"/>

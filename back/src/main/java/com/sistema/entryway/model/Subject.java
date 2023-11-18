@@ -35,7 +35,7 @@ public class Subject implements Serializable {
     @Column(name = "email", nullable = false, length = 256)
     private String email;
 
-    @Column(name = "phone", nullable = false, length = 16)
+    @Column(name = "phone", length = 16)
     private String phone;
 
     @Column(name = "password")
