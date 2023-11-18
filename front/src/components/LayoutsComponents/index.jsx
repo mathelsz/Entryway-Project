@@ -1,4 +1,4 @@
-import logo from '../../assests/logo.webp'
+import logo from '../../assets/logo.webp'
 import '../../../src/styles.css'
 
 export const LayoutComponents = (props) => {

@@ -218,10 +218,23 @@ body {
 }
 
 .text-redefine-password {
-  top: 50px;
-  right: 0px;
+  top: 15px;
+  right: 0;
   position: absolute;
   font-size: 14px;
+
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.text-redefine-password-active {
+  top: 15px;
+  right: 0;
+  position: absolute;
+  font-size: 14px;
+
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 }
 
 .home-logo {
@@ -231,4 +244,20 @@ body {
 
 .home-logo img {
   width: 100px;
+}
+
+/* TEMPORARIO */
+
+.construction-message {
+  border: 2px solid #6a6767;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #333;
+  text-align: center;
+  margin: 50px;
+}
+
+.logo {
+  max-width: 100px;
+  height: auto;
 }
