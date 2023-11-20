@@ -1,6 +1,6 @@
 import '../../../../src/styles.css'
 
-export const ButtomDefault = (props) => {
+export const ButtomDefault = ( props ) => {
     return (
         <div className={props.className}>
             <button

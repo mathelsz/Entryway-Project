@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { InputText } from "../../components/Inputs";
 import { ButtomDefault } from "../../components/Buttons/ButtomDefault";
 
+import check from "../../assets/check.svg";
+
 export const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -55,7 +57,7 @@ export const Signup = () => {
 
       <InputText
         className={formData.email !== "" ? "has-val input" : "input"}
-        type="email"
+        type="Email"
         placeholder="Email"
         value={formData.email}
         onChange={e => handleInputChange("email", e.target.value)}
@@ -67,16 +69,20 @@ export const Signup = () => {
         placeholder="Senha"
         value={formData.password}
         onChange={e => handleInputChange("password", e.target.value)}
-      />
+      >
+        <div className={formData.password.length < 8 ? "text-redefine-password-active" : "text-redefine-password"}>
+          <img className="txt1" src={check} alt="check senha"/>
+        </div>
+      </InputText>
 
       <ButtomDefault
         className="login-form-btn"
         text="Cadastrar"
         onClick={
-          formData.username &&
+          (formData.username &&
           formData.name &&
-          formData.email &&
-          formData.password !== '' ? handleSignUp : handleSignUpIsEmpty}>
+          formData.email !== '') &&
+          (formData.password.length >= 8) ? handleSignUp : handleSignUpIsEmpty}>
           Sign up
       </ButtomDefault>
 

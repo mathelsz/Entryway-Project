@@ -33,7 +33,7 @@ export const Login = () => {
 	};
 
 	return (
-		<LayoutComponents title="Bem Vindo">
+		<LayoutComponents title="Bem-vindo">
 
 			<InputText
 				className={formData.username !== "" ? "has-val input" : "input"}
@@ -60,7 +60,7 @@ export const Login = () => {
 				text="Entrar"
 				onClick={
 					formData.username &&
-					formData.password !== '' ? handleSignUp : handleSignUpIsEmpty
+					formData.password.length >= 8 ? handleSignUp : handleSignUpIsEmpty
 				}
 			/>
 

@@ -1,6 +1,6 @@
 import '../../../src/styles.css'
 
-export const InputText = (props) => {
+export const InputText = ( props ) => {
 
     return (
         <div className="wrap-input">
