@@ -1,7 +1,7 @@
 import logo from '../../assets/logo.webp'
 import '../../../src/styles.css'
 
-export const LayoutComponents = (props) => {
+export const LayoutComponents = ( props ) => {
   return (
     <div className="container">
       <div className="container-login">
