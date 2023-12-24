@@ -23,9 +23,7 @@
             <column name="email" type="varchar(256)">
                 <constraints nullable="false"/>
             </column>
-            <column name="phone" type="varchar(16)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="phone" type="varchar(16)"/>
             <column name="password" type="varchar"/>
             <column name="active" type="boolean">
                 <constraints nullable="false"/>
@@ -40,7 +38,7 @@
     <changeSet id="20231114081000" author="Matheus">
         <insert tableName="subject">
             <column name="id" value="e3474f08-94fd-4b3c-8e37-ff958483b7c4"/>
-            <column name="subject_type" value="ENTRY"/>
+            <column name="subject_type" value="ADMIN"/>
             <column name="username" value="entryway"/>
             <column name="name" value="Entryway"/>
             <column name="email" value="entryway@entryway.com"/>
