@@ -3,9 +3,14 @@ package com.sistema.entryway.model;
 import com.sistema.entryway.dto.SubjectDTO;
 import com.sistema.entryway.enumeration.SubjectType;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -13,7 +18,7 @@ import static jakarta.persistence.EnumType.STRING;
 
 @Entity
 @Table(name = "subject")
-public class Subject implements Serializable {
+public class Subject implements UserDetails {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -48,15 +53,15 @@ public class Subject implements Serializable {
         this.active = true;
     }
 
-    public Subject(SubjectDTO subjectDTO) {
+    public Subject(SubjectDTO subject, String password) {
         this();
 
-        this.subjectType = subjectDTO.getSubjectType();
-        this.username = subjectDTO.getUsername();
-        this.name = subjectDTO.getName();
-        this.email = subjectDTO.getEmail();
-        this.phone = subjectDTO.getPhone();
-        this.password = subjectDTO.getPassword();
+        this.subjectType = subject.subjectType();
+        this.username = subject.username();
+        this.name = subject.name();
+        this.email = subject.email();
+        this.phone = subject.phone();
+        this.password = password;
     }
 
     public UUID getId() {
@@ -69,14 +74,6 @@ public class Subject implements Serializable {
 
     public void setSubjectType(SubjectType subjectType) {
         this.subjectType = subjectType;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getName() {
@@ -117,6 +114,50 @@ public class Subject implements Serializable {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+         if (this.subjectType == SubjectType.ADMIN) {
+             return List.of(
+                     new SimpleGrantedAuthority("ROLE_ADMIN"),
+                     new SimpleGrantedAuthority("ROLE_USER")
+             );
+         } else {
+             return List.of(
+                     new SimpleGrantedAuthority("ROLE_USER")
+             );
+         }
     }
 
     public Subject mergeForUpdate(Subject subject) {

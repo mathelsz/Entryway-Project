@@ -1,5 +1,6 @@
 package com.sistema.entryway.service;
 
+import com.sistema.entryway.validator.SubjetcValidator;
 import com.sistema.entryway.dto.SubjectDTO;
 import com.sistema.entryway.model.Subject;
 import com.sistema.entryway.repository.SubjectRepository;
@@ -14,9 +15,11 @@ import java.util.UUID;
 @Service
 public class SubjectService {
     private final SubjectRepository subjectRepository;
+    private final SubjetcValidator subjetcValidator;
 
-    public SubjectService(SubjectRepository subjectRepository) {
+    public SubjectService(SubjectRepository subjectRepository, SubjetcValidator subjetcValidator) {
         this.subjectRepository = subjectRepository;
+        this.subjetcValidator = subjetcValidator;
     }
 
     @Transactional(readOnly = true)
@@ -35,8 +38,10 @@ public class SubjectService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public Subject create(SubjectDTO subjectDTO) {
-        return this.save(new Subject(subjectDTO));
+    public Subject create(SubjectDTO subjectDTO, String password) {
+        this.subjetcValidator.verifySubject(subjectDTO);
+
+        return this.save(new Subject(subjectDTO, password));
     }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
