@@ -43,7 +43,7 @@
             <column name="name" value="Entryway"/>
             <column name="email" value="entryway@entryway.com"/>
             <column name="phone" value="+5544997282268"/>
-            <column name="password" value="123"/>
+            <column name="password" value="$2a$10$0IcKVl/mGwl0UaEHGkyLFOz4rnUDhvV6WACnaVBmsC6.nh48kdCaK"/>
             <column name="active" value="true"/>
         </insert>
     </changeSet>
